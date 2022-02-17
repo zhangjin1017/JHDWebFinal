@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+    <link rel="stylesheet" href="../css/login.css">
+
+    <script type="text/javascript">
+        //简易登录
+        function login() {
+            var name = document.getElementById("name").value;
+            var pass = document.getElementById("pass").value;
+            var json = localStorage.getItem(name);
+            if (json == null) {
+                alert("该账号不存在");
+            } else {
+                var jsonObj = JSON.parse(json);
+                console.log(jsonObj);
+                if (jsonObj.pass == pass) {
+                    alert("登录成功");
+                    localStorage.setItem("active", name);
+                    window.location.href = "index.html";
+                } else {
+                    alert("密码错误");
+                }
+            }
+        }
+        //简易注册
+        function register() {
+            var regname = document.getElementById("regname").value;
+            var regpass = document.getElementById("regpass").value;
+            var reregpass = document.getElementById("reregpass").value;
+            if (regpass == reregpass) {
+                var user = {
+                    name: regname,
+                    pass: regpass
+                }
+                var user = JSON.stringify(user);
+                localStorage.setItem(regname, user);
+                alert("注册成功");
+                window.location.reload();
+            } else {
+                alert("两次密码不一致");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="materialContainer" id="div1" draggable="true">
+        <div class="box">
+            <div class="title">登录</div>
+            <div class="input">
+                <label for="name">学号</label>
+                <input type="text" name="name" id="name" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="pass">密码</label>
+                <input type="password" name="pass" id="pass" required>
+                <span class="spin"></span>
+            </div>
+            <div class="button login">
+                <button id="button">
+                    <span onclick="login()">登录</span>
+                    <!-- <i class="fa fa-check"></i> -->
+                </button>
+            </div>
+            <!-- <a href="javascript:" class="pass-forgot">忘记密码？</a> -->
+        </div>
+
+        <div class="overbox">
+            <div class="material-button alt-2">
+                <span class="shape"></span>
+            </div>
+            <div class="title">注册</div>
+            <div class="input">
+                <label for="regname">学号</label>
+                <input type="text" name="regname" id="regname" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="regpass">密码</label>
+                <input type="password" name="regpass" id="regpass" required>
+                <span class="spin"></span>
+            </div>
+            <div class="input">
+                <label for="reregpass">确认密码</label>
+                <input type="password" name="reregpass" id="reregpass" required>
+                <span class="spin"></span>
+            </div>
+            <div class="button">
+                <button>
+                    <span onclick="register()">注册</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+
+</html>

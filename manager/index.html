@@ -1,0 +1,397 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+	<!--字体图标-->
+	<link href="../javaex/pc/css/icomoon.css" rel="stylesheet" />
+	<!--动画-->
+	<link href="../javaex/pc/css/animate.css" rel="stylesheet" />
+	<!--骨架样式-->
+	<link href="../javaex/pc/css/common.css" rel="stylesheet" />
+	<!--皮肤-->
+	<link href="../javaex/pc/css/skin/default.css" rel="stylesheet" />
+	<!--jquery，不可修改版本-->
+	<script src="../javaex/pc/lib/jquery-1.7.2.min.js"></script>
+	<!--核心组件-->
+	<script src="../javaex/pc/js/javaex.min.js"></script>
+	<!--表单验证-->
+	<script src="../javaex/pc/js/javaex-formVerify.js"></script>
+
+	<script type="text/javaScript">
+window.onload = function() {
+	var json = localStorage.getItem("active");
+ var jsonObj = JSON.parse(json);
+ var user = JSON.parse(localStorage.getItem(jsonObj));
+
+	javaex.alert({
+			content : "江苏海洋大学欢迎你   "+user.name
+		});
+}
+ function exit() {
+		javaex.alert({
+			content : "确定要退出么？",
+			confirm : function() {
+				localStorage.removeItem("active");
+				window.location = "login.html";
+			}
+		});
+	}
+	</script>
+	<style>
+		.javaex-container {
+			position: relative;
+			width: 100%;
+			min-height: 600px;
+			height: 100vh;
+			display: flex;
+			flex-direction: row;
+			flex: 1;
+			flex-basis: auto;
+			box-sizing: border-box;
+			min-width: 0;
+		}
+
+		aside {
+			background-color: #031528;
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 220px;
+			box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;
+			z-index: 10;
+		}
+
+		.javaex-logo {
+			display: block;
+			margin: 20px 0 30px 42px;
+		}
+
+		.javaex-logo>img {
+			width: 106px;
+			height: 33px;
+			vertical-align: middle;
+		}
+
+		.javaex-menu-container {
+			background-color: #031528;
+		}
+
+		.javaex-menu .javaex-menu-item {
+			width: 100%;
+			font-size: 16px;
+			padding: 0;
+		}
+
+		.javaex-menu .javaex-menu-item.hover>a {
+			color: #ccd0d4;
+			display: block;
+		}
+
+		.javaex-menu-container .javaex-menu a {
+			color: #ccd0d4;
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+		}
+
+		.javaex-menu li {
+			border-left: 3px solid #031528;
+		}
+
+		.javaex-menu li.javaex-menu-item>a:hover,
+		.javaex-menu li.javaex-menu-item li a:hover {
+			color: #fff;
+			background-color: #03223d;
+		}
+
+		.javaex-menu .javaex-menu-item.hover>a,
+		.javaex-menu .javaex-menu-item ul .hover a {
+			color: #fff;
+			background-color: #03223d;
+		}
+
+		.javaex-menu li.javaex-menu-item.javaex-menu-show>a {
+			color: #ccd0d4;
+			background-color: unset;
+		}
+
+		.javaex-menu li.javaex-menu-item li a {
+			padding-left: 44px;
+			color: #7f8c99;
+			height: 42px;
+			line-height: 42px;
+		}
+
+		.javaex-menu .javaex-menu-item.alone.hover,
+		.javaex-menu .javaex-menu-item ul .hover {
+			border-color: #06a8ff;
+		}
+
+		.javaex-menu .javaex-menu-item.alone.hover>a::before {
+			height: 50px;
+		}
+
+		.javaex-menu .javaex-menu-item ul .hover a::before {
+			height: 42px;
+		}
+
+		section {
+			margin-left: 220px;
+			flex-direction: column;
+			display: flex;
+			flex: 1;
+			min-width: 0;
+		}
+
+		header {
+			background: #fff;
+			color: #333;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			height: 60px;
+		}
+
+		.javaex-header-title {
+			font-size: 16px;
+			line-height: 60px;
+			padding-left: 20px;
+		}
+
+		.javaex-header-right {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+			min-width: 310px;
+		}
+
+		.javaex-header-line {
+			height: 10px;
+			width: 1px;
+			background-color: #d8d8d8;
+			margin-top: 26px;
+			display: inline-block;
+		}
+
+		.javaex-header-menu {
+			padding: 0 12px;
+			font-size: 12px;
+			line-height: 60px;
+			cursor: pointer;
+		}
+
+		.javaex-header-notify {
+			position: relative;
+			padding-right: 16px;
+		}
+
+		.javaex-dropdown {
+			font-size: 12px;
+			color: #666;
+			cursor: pointer;
+			display: inline-block;
+			position: relative;
+		}
+
+		.javaex-header-user-avatar {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			vertical-align: middle;
+		}
+
+		.javaex-header-username {
+			margin-left: 10px;
+			font-size: 12px;
+			letter-spacing: 0;
+		}
+
+		.javaex-header-user .icon {
+			color: #333;
+			font-size: 14px;
+		}
+
+		.javaex-dropdown-menu {
+			transform-origin: center top;
+			z-index: 2011;
+			position: absolute;
+			display: none;
+			border-radius: 4px;
+			left: -0;
+			top: 61px;
+			background-color: #1f1f21;
+			width: 100%;
+			text-align: center;
+			padding: 10px 0;
+			box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+		}
+
+		.javaex-dropdown:hover .javaex-dropdown-menu {
+			display: block;
+		}
+
+		.javaex-dropdown-menu .javaex-dropdown-menu-item {
+			list-style: none;
+			line-height: 36px;
+			padding: 0 20px;
+			margin: 0;
+			font-size: 14px;
+			color: #606266;
+			cursor: pointer;
+			outline: 0;
+		}
+
+		.javaex-dropdown-menu .javaex-dropdown-menu-item a {
+			color: #fff;
+		}
+
+		.javaex-dropdown-menu li:hover {
+			background: #404040;
+		}
+
+		.popper-arrow {
+			position: absolute;
+			top: -5px;
+			left: 50%;
+			margin-left: -8px;
+			border-right: 5px solid transparent;
+			border-bottom: 5px solid #1f1f21;
+			border-left: 5px solid transparent;
+			border-bottom-color: #1f1f21;
+		}
+
+		main {
+			background: #f1f1f1;
+			padding-bottom: 0;
+			display: block;
+			flex: 1;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="javaex-container">
+		<aside>
+			<a href="javascript:;" class="javaex-logo">
+				<img src="../img/校名透明底.png" />
+			</a>
+			<div class="javaex-menu-container" style="height: calc(100% - 103px);">
+				<div id="menu" class="javaex-menu">
+					<ul>
+						<li class="javaex-menu-item alone hover">
+							<a href="javaScript:;">首页</a>
+						</li>
+					</ul>
+					<ul>
+						<li class="javaex-menu-item">
+							<a href="javascript:;">一级导航<i class="icon-angle-down"></i></a>
+							<ul>
+								<li><a href="javaScript:;">二级导航</a></li>
+								<li><a href="javaScript:;">二级导航</a></li>
+								<li><a href="javaScript:;">二级导航</a></li>
+								<li><a href="javaScript:;">二级导航</a></li>
+							</ul>
+						</li>
+						<li class="javaex-menu-item">
+							<a href="javascript:;">一级导航<i class="icon-angle-down"></i></a>
+							<ul>
+								<li><a href="javaScript:;">二级导航</a></li>
+								<li><a href="javaScript:;">二级导航</a></li>
+							</ul>
+						</li>
+						<li class="javaex-menu-item">
+							<a href="javascript:;">一级导航<i class="icon-angle-down"></i></a>
+							<ul>
+								<li><a href="javaScript:;">二级导航</a></li>
+								<li><a href="javaScript:;">二级导航</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</aside>
+		<section>
+			<header>
+				<div class="javaex-header-title">首页</div>
+				<div class="javaex-header-right">
+					<div class="javaex-header-menu javaex-header-notify"><i class="icon-notifications_none"></i><span
+							class="text">消息</span></div>
+					<span class="javaex-header-line"></span>
+					<div class="javaex-header-menu"><span class="text">帮助中心</span></div>
+					<span class="javaex-header-line"></span>
+					<div class="javaex-header-menu javaex-header-user">
+						<div class="javaex-dropdown">
+							<div>
+								<img src="../img/校徽透明底.png" class="javaex-header-user-avatar" />
+								<span class="javaex-header-username">江苏海洋大学</span>
+								<i class="icon icon-caret-down"></i>
+							</div>
+
+							<ul class="javaex-dropdown-menu javaex-animated-slide-down">
+								<li class="javaex-dropdown-menu-item"><a href="javascript:;">个人信息</a></li>
+								<li class="javaex-dropdown-menu-item"><a href="javascript:exit()">退出登录</a>
+								</li>
+								<div class="popper-arrow"></div>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</header>
+			<main>
+				<div class="javaex-page-wrap">
+					<div class="javaex-page-content">
+						<div class="javaex-page-body" style="padding: 10px 10px 0 10px;">
+							<div class="javaex-block has-border">
+								<div class="javaex-banner"><span class="javaex-block-fixed"></span>标题</div>
+								<div class="javaex-main-10">
+									<p class="javaex-toast">
+										测试文字<br />
+										测试文字测试文字测试文字测试文字
+									</p>
+									<hr class="javaex-divider" />
+									<p class="javaex-toast">
+										测试文字<br />
+										测试文字测试文字测试文字测试文字
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div style="background-color: #fff;">
+							<div class="javaex-page-footer">
+								<div class="javaex-page">
+									<ul id="page" class="javaex-pagination"></ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</main>
+		</section>
+	</div>
+</body>
+<script>
+	javaex.menu({
+		id: "menu"
+	});
+
+	javaex.page({
+		id: "page",    // jquery选择器，指定到ul节点
+		pageNum: 1,           // 默认选中第几页
+		pageSize: 10,         // 每页显示多少条
+		totalPages: 12,       // 总页数
+		isShowJumpPage: true, // 是否显示跳页
+		totalNum: 125,        // 总条数，不填时，不显示
+		position: "left",
+		callback: function (rtn) {
+			console.log("当前选中的页数：" + rtn.pageNum);
+			console.log("每页显示条数：" + rtn.pageSize);
+		}
+	});
+</script>
+
+</html>

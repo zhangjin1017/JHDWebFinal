@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin: 0;padding: 0;}
+li{list-style: none;}
+a{text-decoration: none;}
+img{border: 0;vertical-align: middle; }
+
+/* .page_hd{width: 100%; background-color:rgba(228,228,228,1);height:140px;} */
+/* .w{height: 140px;width:1000px;margin:0 auto;margin-top:-20px;} */
+.icon .jou_logo{ position:relative;top:12px;margin-left: 8%;}
+.vpn{position:relative;right:20px;top:20px;}
+/* .vpn ul li{float:right;} */
+.vpn ul li a{font-size: 12px;color: darkblue;font-weight: 900;}
+.jou_identity{position:relative;top:-20px;}
+.jou_identity ul li{float: right;margin-right: 20px;}
+
+.other{width: 100%;height: 50px;background-color: #0d59a7;}
+#img_88{width: 20px;height: 20px; float:left;margin-top:16px;margin-left:80px;}
+#img_88:hover{content:url(../img/88_o.png);}
+.other_nav{width:1000px;margin:0 auto;height:50px;}
+.other_nav li{line-height:50px;list-style: none;float: left;color: white;margin-left: 25px;}
+.other_nav li a:hover{color: rgba(255,102,0,1);}
+.other_nav a{color: white;text-decoration:none;}
+
+.sch_sty_container,.sch_his_container,.sch_vid_container{width:1000px;border: 1px solid dodgerblue;margin:0 auto;float:none;border-radius: 20px;}
+
+#sch_sty_tophead,#sch_sty_tophead,#sch_stu_tophead,#sch_pho_tophead,#sch_vid_tophead{ font-size:26px;margin:20px 0px;}
+.sch_sty_xb{margin-left:260px;}
+.sch_sty_xb img{width:200px;margin-left:120px;}
+.sch_sty_xm,.sch_sty_xg{margin-left:260px;margin-top:20px;}
+.sch_sty_xg img{margin-bottom:20px;}
+
+.sch_his_container img{margin-left:200px;margin-bottom:20px;}
+
+#sch_stu_div111,#sch_pho_div111{width:1000px;border: 1px solid dodgerblue;margin:0 auto;border-radius: 20px;}
+#sch_stu_div111 .row,#sch_pho_div111 .row{margin:10px;}
+
+#myVideo{position: relative;width: 80%;height: 50%;margin-left: 10%;}
+#btnGroup{padding-top: 3%;margin-left: 20%;margin-bottom: 2%;}
+
+#main{width: 1000px;margin: 0px auto;border: 1px solid dodgerblue;height:400px;}	
+#form1{font-size: 14px;padding: 10px;margin: 10px 0px 10px 10px;;}
+#form1 label{display: inline-block;width: 100px;text-align: right;}
