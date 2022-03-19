@@ -1,22 +1,22 @@
+#include <malloc.h>
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
-#include <malloc.h>
 typedef struct Node
 {
-    char city[10]; //³ÇÊĞÃû
-    int x;         // xÖáÎ»ÖÃ
-    int y;         // yÖáÎ»ÖÃ
+    char city[10]; //åŸå¸‚å
+    int x;         // xè½´ä½ç½®
+    int y;         // yè½´ä½ç½®
     struct Node *next;
 } Node, *LinkList;
 
-//³õÊ¼»¯µ¥Á´±í
+//åˆå§‹åŒ–å•é“¾è¡¨
 void InitList(LinkList *L)
 {
     *L = (LinkList)malloc(sizeof(Node));
     (*L)->next = NULL;
 }
-//ÓÃÎ²²å·¨½¨Á¢µ¥Á´±í
+//ç”¨å°¾æ’æ³•å»ºç«‹å•é“¾è¡¨
 void CreateFormTail(LinkList L)
 {
     Node *r, *s;
@@ -25,17 +25,17 @@ void CreateFormTail(LinkList L)
     char city[10];
     int x;
     int y;
-    char *jieshu = "½áÊø";
+    char *jieshu = "ç»“æŸ";
     while (flag)
     {
-        printf("ÇëÊäÈë³ÇÊĞÃû: (Èç¹ûÊäÈë'½áÊø',Ôò½áÊø)\n");
+        printf("è¯·è¾“å…¥åŸå¸‚å: (å¦‚æœè¾“å…¥'ç»“æŸ',åˆ™ç»“æŸ)\n");
         scanf("%s", city);
 
-        if (strcmp(city, jieshu) != 0) //Èç¹ûÊäÈë'½áÊø'£¬Ôò½áÊø
+        if (strcmp(city, jieshu) != 0) //é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿ?'é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·'é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿ?
         {
-            printf("ÇëÊäÈëx×ø±ê:\n");
+            printf("è¯·è¾“å…¥x,yåæ ‡:\n");
             scanf("%d", &x);
-            printf("ÇëÊäÈëy×ø±ê:\n");
+            // printf("è¯·è¾“å…¥yåæ ‡:\n");
             scanf("%d", &y);
             s = (Node *)malloc(sizeof(Node));
             strcpy(s->city, city);
@@ -51,55 +51,55 @@ void CreateFormTail(LinkList L)
         }
     }
 }
-//¸ù¾İ³ÇÊĞÃû»ñÈ¡×ø±ê
+//æ ¹æ®åŸå¸‚åè·å–åæ ‡
 void getXYByCity(LinkList L, char *city)
 {
     Node *p;
     p = L->next;
-    // printf("¿ªÊ¼");
+    // printf("å¼€å§‹");
     // printf("%s\n", p);
     // printf("%s\n", p->city);
     // printf("%d\n", p->x);
     // printf("%d\n", p->y);
     while (p != NULL)
-    { //Ê¹ÓÃstrcmp()·½·¨Ñ°ÕÒ³ÇÊĞ
-        // printf("¿ªÊ¼ÅĞ¶Ï£º%s,%s\n", p->city, city);
+    { //ä½¿ç”¨strcmp()æ–¹æ³•å¯»æ‰¾åŸå¸‚
+        // printf("å¼€å§‹åˆ¤æ–­ï¼š%s,%s\n", p->city, city);
         if (strcmp(p->city, city) == 0)
         {
-            printf("×ø±êÎª(%d,%d)\n", p->x, p->y);
-            break; //ÕÒµ½Ò»¸ö¾ÍÌø³öÑ­»·
+            printf("åæ ‡ä¸º(%d,%d)\n", p->x, p->y);
+            break; //æ‰¾åˆ°ä¸€ä¸ªå°±è·³å‡ºå¾ªç¯
         }
-        p = p->next; //ÏÂÒ»½áµã
+        p = p->next; //ä¸‹ä¸€ä¸ªç»“ç‚¹
     }
     if (p == NULL)
     {
-        printf("Ã»ÓĞ²éÕÒµ½¶ÔÓ¦³ÇÊĞ\n");
+        printf("æ²¡æœ‰æŸ¥æ‰¾åˆ°å¯¹åº”åŸå¸‚\n");
     }
 }
-//²éÕÒËùÓĞ·ûºÏÒªÇóµÄ³ÇÊĞ
+//æŸ¥æ‰¾æ‰€æœ‰ç¬¦åˆè¦æ±‚çš„åŸå¸‚
 void getAllCities(LinkList L, int x, int y, int D)
 {
     Node *p;
     p = L->next;
-    int px, py;  // p½áµãÉÏµÄx,y×ø±ê
-    int dx, dy;  //×ø±êPºÍp½áµãµÄ×ø±ê²î
-    int num = 0; //¼ÇÂ¼·ûºÏÌõ¼şµÄ³ÇÊĞÊıÁ¿
+    int px, py;  // pç»“ç‚¹ä¸Šçš„xï¼Œyåæ ‡
+    int dx, dy;  //åæ ‡På’Œpç»“ç‚¹çš„åæ ‡å·®
+    int num = 0; //è®°å½•ç¬¦åˆæ¡ä»¶çš„åŸå¸‚æ•°é‡
     while (p != NULL)
     {
         px = p->x;
         py = p->y;
-        dx = abs(px - x); //¾àÀëÎªÕûÊı£¬ËùÒÔÈ¡¾ø¶ÔÖµ
+        dx = abs(px - x); //è·ç¦»ä¸ºæ•´æ•°ï¼Œæ‰€ä»¥å–ç»å¯¹å€¼
         dy = abs(py - y);
-        if (dx * dx + dy * dy <= D * D) //ÅĞ¶ÏÊÇ·ñÔÚD¾àÀë·¶Î§ÄÚ
+        if (dx * dx + dy * dy <= D * D) //åˆ¤æ–­æ˜¯å¦åœ¨Dè·ç¦»èŒƒå›´å†…
         {
             printf("%s  ", p->city);
-            num++; //ÕÒµ½·ûºÏÌõ¼şµÄ£¬ÊıÁ¿+1
+            num++; //æ‰¾åˆ°ç¬¦åˆæ¡ä»¶çš„ï¼Œæ•°é‡+1
         }
-        p = p->next; //ÏÂÒ»½áµã
+        p = p->next; //ä¸‹ä¸€ç»“ç‚¹
     }
-    if (num == 0) //ÕÒµ½0¸ö³ÇÊĞ
+    if (num == 0) //æ‰¾åˆ°0ä¸ªåŸå¸‚
     {
-        printf("Ã»ÓĞ²éÕÒµ½·ûºÏµÄ³ÇÊĞ\n");
+        printf("æ²¡æœ‰æŸ¥æ‰¾åˆ°ç¬¦åˆçš„åŸå¸‚\n");
     }
 }
 int main(int argc, char const *argv[])
@@ -107,20 +107,20 @@ int main(int argc, char const *argv[])
     LinkList L;
     InitList(&L);
     CreateFormTail(L);
-    //µÚÒ»ÎÊ
-    printf("ÇëÊäÈëÒª²éÕÒµÄ³ÇÊĞÃû:");
+    //ç¬¬ä¸€é¢˜
+    printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾çš„åŸå¸‚å:");
     char city[10];
     scanf("%s", city);
     char *searchCity = city;
-    getXYByCity(L, searchCity); //²éÕÒ×ø±ê
+    getXYByCity(L, searchCity); //æŸ¥æ‰¾åæ ‡
     printf("---------------------------------------\n");
-    //µÚ¶şÎÊ
+    //ç¬¬äºŒé¢˜
     int x, y, D;
-    printf("ÇëÊäÈë×ø±êP(¿Õ¸ñ¸ô¿ª):");
+    printf("è¯·è¾“å…¥åæ ‡P(ç©ºæ ¼éš”å¼€):");
     scanf("%d %d", &x, &y);
     // printf("x:%d,y:%d", x, y);
-    printf("ÇëÊäÈë¾àÀëD:");
+    printf("è¯·è¾“å…¥è·ç¦»D:");
     scanf("%d", &D);
-    getAllCities(L, x, y, D); //²éÕÒ·ûºÏÌõ¼şµÄ³ÇÊĞ
+    getAllCities(L, x, y, D); //æŸ¥æ‰¾ç¬¦åˆæ¡ä»¶çš„åŸå¸‚
     return 0;
 }
