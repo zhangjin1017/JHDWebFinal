@@ -1,40 +1,40 @@
 
-//»ñµÃÊÓÆµ¶ÔÏó
+//ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½
 var myVideo = document.getElementById('myVideo');
 
-/*²¥·ÅÔÝÍ£*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£*/
 function playPause(btn) {
     if (myVideo.paused) {
         myVideo.play();
-        btn.value = 'ÔÝÍ£';
+        btn.value = 'ï¿½ï¿½Í£';
     } else {
         myVideo.pause();
-        btn.value = '²¥·Å';
+        btn.value = 'ï¿½ï¿½ï¿½ï¿½';
     }
 }
 
-/*²¥·Å½áÊøÊÂ¼þ»Øµ÷*/
+/*ï¿½ï¿½ï¿½Å½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Øµï¿½*/
 myVideo.onended = function () {
-    alert('²¥·Å½áÊø');
-    document.getElementById('playBtn').value = '²¥·Å';
+    alert('ï¿½ï¿½ï¿½Å½ï¿½ï¿½ï¿½');
+    document.getElementById('playBtn').value = 'ï¿½ï¿½ï¿½ï¿½';
 }
 
-/*Ç°½øºóÍË*/
+/*Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 function forwardBack(i) {
     myVideo.currentTime += i;
 }
 
-/*¿ìËÙ²¥·Å*/
+/*ï¿½ï¿½ï¿½Ù²ï¿½ï¿½ï¿½*/
 function toFast() {
     myVideo.playbackRate = 3;
 }
 
-/*ÂýËÙ²¥·Å*/
+/*ï¿½ï¿½ï¿½Ù²ï¿½ï¿½ï¿½*/
 function toSlow() {
     myVideo.playbackRate = 1 / 3;
 }
 
-/*Õý³£±¶ËÙ*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 function toNormal() {
     myVideo.playbackRate = 1;
 }
