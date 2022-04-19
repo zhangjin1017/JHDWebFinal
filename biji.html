@@ -6,43 +6,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>笔记</title>
+    <script src="js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.zhimg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.zhimg.com/element-ui/lib/index.js"></script>
     <style>
-        body {
-            font-size: 30px;
+        .el-link {
+            font-size: 50px
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <ul>软件工程
-            <li><a href="ruanjiangongcheng/ruanjiangongcheng308.html">2022-3-8</a></li>
-            <li><a href="ruanjiangongcheng/ruanjiangongcheng310.html">2022-3-10</a></li>
-            <li><a href="ruanjiangongcheng/ruanjiangongcheng315.html">2022-3-15</a></li>
-        </ul>
-        <ul>计算机组成原理
-            <li><a href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye1.html">作业一</a></li>
-            <li><a href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye2.html">作业二</a></li>
-            <li><a href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye3.html">作业三</a></li>
-            <li><a href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye4.html">作业四</a></li>
-            <li><a href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye5.html">作业五</a></li>
-            <li><a href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye6.html">作业六</a></li>
-        </ul>
-        <ul>数据结构
-            <li><a href="shujujiegou/shujujiegoushiyan1.html">实验一</a></li>
-            <li><a href="shujujiegou/shujujiegoushiyan2.html">实验二</a></li>
-            <li><a href="shujujiegou/shujujiegoushiyan3.html">实验三</a></li>
-            <li><a href="shujujiegou/shujujiegoushiyan4.html">实验四</a></li>
-            <li><a href="shujujiegou/shujujiegoushiyan5.html">实验五(百度的,遍历结果应该只有DFS是对的)</a></li>
-        </ul>
-        <ul>J2EE
-            <li><a href="https://github.com/zhangjin1017/J2EEHomeWork">作业(更新到作业8)</a></li>
-        </ul>
+    <div id="app">
+
+
+
+        <template>
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                <el-tab-pane label="数据结构" name="first">
+                    <el-link href="shujujiegou/shujujiegoushiyan1.html">实验一</el-link><br>
+                    <el-link href="shujujiegou/shujujiegoushiyan2.html">实验二</el-link><br>
+                    <el-link href="shujujiegou/shujujiegoushiyan3.html">实验三</el-link><br>
+                    <el-link href="shujujiegou/shujujiegoushiyan4.html">实验四</el-link><br>
+                    <el-link href="shujujiegou/shujujiegoushiyan5.html">实验五(百度的,遍历结果应该只有DFS是对的)</el-link><br>
+                    <el-link href="#" onclick="alert('参考实验六实验指导')">参考实验六实验指导</el-link><br>
+
+                </el-tab-pane>
+                <el-tab-pane label="J2EE" name="second">
+                    <el-link href="https://github.com/zhangjin1017/J2EEHomeWork">作业(更新到实验1)</el-link><br>
+                    <el-link href="https://github.com/zhangjin1017/J2EEShiYan1ByBoot">实验1完整版(springboot+jpa+vue前后端分离)
+                    </el-link><br>
+                </el-tab-pane>
+                <el-tab-pane label="软件工程" name="third">
+                    <el-link href="ruanjiangongcheng/ruanjiangongcheng308.html">2022-3-8</el-link><br>
+                    <el-link href="ruanjiangongcheng/ruanjiangongcheng310.html">2022-3-10</el-link><br>
+                    <el-link href="ruanjiangongcheng/ruanjiangongcheng315.html">2022-3-15</el-link><br>
+                </el-tab-pane>
+                <el-tab-pane label="计算机组成原理" name="fourth">
+                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye1.html">作业一</el-link><br>
+                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye2.html">作业二</el-link><br>
+                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye3.html">作业三</el-link><br>
+                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye4.html">作业四</el-link><br>
+                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye5.html">作业五</el-link><br>
+                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye6.html">作业六</el-link><br>
+                </el-tab-pane>
+            </el-tabs>
+        </template>
+
+
     </div>
 
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                activeName: 'second',
 
+            },
 
-
+            methods: {
+                handleClick(tab, event) {
+                    console.log(tab, event);
+                }
+            }
+        })
+    </script>
 
 </body>
 <script src="js/dongtaibeijing.js"></script>
