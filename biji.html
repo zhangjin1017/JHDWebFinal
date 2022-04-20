@@ -15,6 +15,14 @@
         .el-link {
             font-size: 50px
         }
+
+        #oldJ2ee {
+            text-decoration: line-through;
+        }
+
+        #newJ2ee {
+            color: red;
+        }
     </style>
 </head>
 
@@ -36,9 +44,14 @@
                     <el-link type="text" @click="openMessage">实验六</el-link><br>
                 </el-tab-pane>
                 <el-tab-pane label="J2EE" name="second">
-                    <el-link href="https://github.com/zhangjin1017/J2EEHomeWork">作业(更新到实验1)</el-link><br>
+                    <el-link id="oldJ2ee" href="https://github.com/zhangjin1017/J2EEHomeWork">作业(过时,截止到实验1)</el-link>
+                    <br>
                     <el-link href="https://github.com/zhangjin1017/J2EEShiYan1ByBoot">实验1完整版(springboot+jpa+vue前后端分离)
                     </el-link><br>
+                    <el-link id="newJ2ee" href="https://github.com/zhangjin1017/J2EEHomeWork-SpringBoot">作业(springboot)
+                    </el-link>
+                    <br>
+
                 </el-tab-pane>
                 <el-tab-pane label="软件工程" name="third">
                     <el-link href="ruanjiangongcheng/ruanjiangongcheng308.html">2022-3-8</el-link><br>
