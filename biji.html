@@ -19,6 +19,7 @@
 </head>
 
 <body>
+
     <div id="app">
 
 
@@ -32,8 +33,7 @@
                     <el-link href="shujujiegou/shujujiegoushiyan3.html">实验三</el-link><br>
                     <el-link href="shujujiegou/shujujiegoushiyan4.html">实验四</el-link><br>
                     <el-link href="shujujiegou/shujujiegoushiyan5.html">实验五(百度的,遍历结果应该只有DFS是对的)</el-link><br>
-                    <el-link href="#" onclick="alert('参考实验六实验指导')">参考实验六实验指导</el-link><br>
-
+                    <el-link type="text" @click="openMessage">实验六</el-link><br>
                 </el-tab-pane>
                 <el-tab-pane label="J2EE" name="second">
                     <el-link href="https://github.com/zhangjin1017/J2EEHomeWork">作业(更新到实验1)</el-link><br>
@@ -56,10 +56,12 @@
             </el-tabs>
         </template>
 
+        <audio id="cheerMusic" ref="music" preload="auto" loop="loop" src="music/圈圈菌 - 想某人DJ版.mp3"></audio>
 
     </div>
 
     <script>
+
         var app = new Vue({
             el: '#app',
             data: {
@@ -71,7 +73,19 @@
             methods: {
                 handleClick(tab, event) {
                     console.log(tab, event);
-                }
+                },
+                openMessage() {
+                    this.$alert('参考实验六实验指导', '消息', {
+                        confirmButtonText: '确定',
+                    });
+                },
+
+            },
+
+
+            mouted() {
+                this.audioAutoPlay('cheerMusic')
+
             }
         })
     </script>
