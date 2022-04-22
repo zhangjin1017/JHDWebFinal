@@ -51,8 +51,8 @@
                     <el-link id="newJ2ee" href="https://github.com/zhangjin1017/J2EEHomeWork-SpringBoot">作业(springboot)
                     </el-link>
                     <br>
-
                 </el-tab-pane>
+
                 <el-tab-pane label="软件工程" name="third">
                     <el-link href="ruanjiangongcheng/ruanjiangongcheng308.html">2022-3-8</el-link><br>
                     <el-link href="ruanjiangongcheng/ruanjiangongcheng310.html">2022-3-10</el-link><br>
@@ -66,10 +66,22 @@
                     <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye5.html">作业五</el-link><br>
                     <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye6.html">作业六</el-link><br>
                 </el-tab-pane>
+                <el-tab-pane label="推荐的学习资料" name="fifth">
+                    <el-link href="https://www.bilibili.com/read/cv9965357">Java学习路线图（2022版，视频已更新）
+                    </el-link><br>
+                    <el-link href=" https://www.bilibili.com/read/cv11353319?from=search&spm_id_from=333.337.0.0">
+                        2022年黑马程序员前端入门学习路线图（最新）
+                    </el-link><br>
+                    <el-link href="https://blog.csdn.net/silence_r/article/details/119142594">CentOs7安装mysql8教程
+                    </el-link><br>
+
+
+
+                </el-tab-pane>
             </el-tabs>
         </template>
 
-        <audio id="cheerMusic" ref="music" preload="auto" loop="loop" src="music/圈圈菌 - 想某人DJ版.mp3"></audio>
+
 
     </div>
 
@@ -79,7 +91,7 @@
             el: '#app',
             data: {
                 message: 'Hello Vue!',
-                activeName: 'second',
+                activeName: 'fifth',
 
             },
 
@@ -97,7 +109,7 @@
 
 
             mouted() {
-                this.audioAutoPlay('cheerMusic')
+
 
             }
         })
