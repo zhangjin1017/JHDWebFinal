@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.zhimg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.zhimg.com/element-ui/lib/index.js"></script>
+    <script src="js/axios.min.js"></script>
     <style>
         .el-link {
             font-size: 50px,
@@ -21,7 +22,8 @@
             text-decoration: line-through;
         }
 
-        .myaudio {
+
+        #footer {
             position: fixed;
             width: 100%;
             bottom: 0;
@@ -95,14 +97,19 @@
                     <el-link :underline="false" href="https://blog.csdn.net/silence_r/article/details/119142594">
                         CentOs7安装mysql8教程
                     </el-link><br>
+                    <el-link :underline="false" href="https://blog.csdn.net/qq_44275213/article/details/107357972">
+                        网易云音乐随机歌曲调用API接口
+                    </el-link><br>
                 </el-tab-pane>
             </el-tabs>
         </template>
-
-        <audio class="myaudio" src="music/圈圈菌 - 想某人DJ版.mp3" controls autoplay loop>
-
-        </audio>
-
+        <div id="footer">
+            <h3>随机音乐</h3>
+            <label>歌名:{{name}}</label><br>
+            <label>歌手:{{artistsname}}</label>
+            <audio class="myaudio" :src="musicUrl" controls autoplay loop>
+            </audio>
+        </div>
     </div>
 
     <script>
@@ -112,6 +119,9 @@
             data: {
                 message: 'Hello Vue!',
                 activeName: 'fifth',
+                musicUrl: "",
+                artistsname: "",
+                name: ""
 
             },
 
@@ -124,13 +134,25 @@
                         confirmButtonText: '确定',
                     });
                 },
+                getRandomMusic() {
+                    var that = this;
+                    axios.get("https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=json")
+                        .then(function (response) {
+                            that.musicUrl = response.data.data.url;
+                            that.artistsname = response.data.data.artistsname;
+                            that.name = response.data.data.name;
+                        }, function (error) {
+                            console.log(error)
+                        })
 
+                }
 
 
             },
             //挂载
             mounted() {
                 console.log('mounted');
+                this.getRandomMusic();
             }
 
         })
