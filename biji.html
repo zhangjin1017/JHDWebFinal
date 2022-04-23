@@ -66,15 +66,21 @@
                     </el-link>
                     <br>
                 </el-tab-pane>
-
-                <el-tab-pane label="软件工程" name="third">
-                    <el-link :underline="false" href="ruanjiangongcheng/ruanjiangongcheng308.html">2022-3-8</el-link>
-                    <br>
-                    <el-link :underline="false" href="ruanjiangongcheng/ruanjiangongcheng310.html">2022-3-10</el-link>
-                    <br>
-                    <el-link :underline="false" href="ruanjiangongcheng/ruanjiangongcheng315.html">2022-3-15</el-link>
-                    <br>
+                <el-tab-pane label="推荐的学习资料" name="third">
+                    <el-link :underline="false" href="https://www.bilibili.com/read/cv9965357">Java学习路线图（2022版，视频已更新）
+                    </el-link><br>
+                    <el-link :underline="false"
+                        href=" https://www.bilibili.com/read/cv11353319?from=search&spm_id_from=333.337.0.0">
+                        2022年黑马程序员前端入门学习路线图（最新）
+                    </el-link><br>
+                    <el-link :underline="false" href="https://blog.csdn.net/silence_r/article/details/119142594">
+                        CentOs7安装mysql8教程
+                    </el-link><br>
+                    <el-link :underline="false" href="https://blog.csdn.net/qq_44275213/article/details/107357972">
+                        网易云音乐随机歌曲调用API接口
+                    </el-link><br>
                 </el-tab-pane>
+
                 <el-tab-pane label="计算机组成原理" name="fourth">
                     <el-link :underline="false" href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye1.html">作业一
                     </el-link><br>
@@ -91,19 +97,14 @@
                     <el-link :underline="false" href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye7.html">作业七
                     </el-link><br>
                 </el-tab-pane>
-                <el-tab-pane label="推荐的学习资料" name="fifth">
-                    <el-link :underline="false" href="https://www.bilibili.com/read/cv9965357">Java学习路线图（2022版，视频已更新）
-                    </el-link><br>
-                    <el-link :underline="false"
-                        href=" https://www.bilibili.com/read/cv11353319?from=search&spm_id_from=333.337.0.0">
-                        2022年黑马程序员前端入门学习路线图（最新）
-                    </el-link><br>
-                    <el-link :underline="false" href="https://blog.csdn.net/silence_r/article/details/119142594">
-                        CentOs7安装mysql8教程
-                    </el-link><br>
-                    <el-link :underline="false" href="https://blog.csdn.net/qq_44275213/article/details/107357972">
-                        网易云音乐随机歌曲调用API接口
-                    </el-link><br>
+
+                <el-tab-pane label="软件工程" name="fifth">
+                    <el-link :underline="false" href="ruanjiangongcheng/ruanjiangongcheng308.html">2022-3-8</el-link>
+                    <br>
+                    <el-link :underline="false" href="ruanjiangongcheng/ruanjiangongcheng310.html">2022-3-10</el-link>
+                    <br>
+                    <el-link :underline="false" href="ruanjiangongcheng/ruanjiangongcheng315.html">2022-3-15</el-link>
+                    <br>
                 </el-tab-pane>
             </el-tabs>
         </template>
@@ -122,7 +123,7 @@
             el: '#app',
             data: {
                 message: 'Hello Vue!',
-                activeName: 'fifth',
+                activeName: 'third',
                 musicUrl: "",
                 artistsname: "",
                 name: ""
