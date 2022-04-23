@@ -29,6 +29,10 @@
             bottom: 0;
             left: 0;
         }
+
+        #myaudio {
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -107,7 +111,7 @@
             <h3>随机音乐</h3>
             <label>歌名:{{name}}</label><br>
             <label>歌手:{{artistsname}}</label>
-            <audio class="myaudio" :src="musicUrl" controls autoplay loop>
+            <audio id="myaudio" class="myaudio" :src="musicUrl" controls autoplay loop>
             </audio>
         </div>
     </div>
