@@ -13,15 +13,19 @@
     <script src="https://unpkg.zhimg.com/element-ui/lib/index.js"></script>
     <style>
         .el-link {
-            font-size: 50px
+            font-size: 50px,
+
         }
 
         #oldJ2ee {
             text-decoration: line-through;
         }
 
-        #newJ2ee {
-            color: red;
+        .myaudio {
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
         }
     </style>
 </head>
@@ -36,53 +40,68 @@
             <el-tabs v-model="activeName" @tab-click="handleClick">
 
                 <el-tab-pane label="数据结构" name="first">
-                    <el-link href="shujujiegou/shujujiegoushiyan1.html">实验一</el-link><br>
-                    <el-link href="shujujiegou/shujujiegoushiyan2.html">实验二</el-link><br>
-                    <el-link href="shujujiegou/shujujiegoushiyan3.html">实验三</el-link><br>
-                    <el-link href="shujujiegou/shujujiegoushiyan4.html">实验四</el-link><br>
-                    <el-link href="shujujiegou/shujujiegoushiyan5.html">实验五(百度的,遍历结果应该只有DFS是对的)</el-link><br>
-                    <el-link type="text" @click="openMessage">实验六</el-link><br>
+                    <el-link :underline="false" href="shujujiegou/shujujiegoushiyan1.html">实验一</el-link><br>
+                    <el-link :underline="false" href="shujujiegou/shujujiegoushiyan2.html">实验二</el-link><br>
+                    <el-link :underline="false" href="shujujiegou/shujujiegoushiyan3.html">实验三</el-link><br>
+                    <el-link :underline="false" href="shujujiegou/shujujiegoushiyan4.html">实验四</el-link><br>
+                    <el-link :underline="false" href="shujujiegou/shujujiegoushiyan5.html">实验五(百度的,遍历结果应该只有DFS是对的)
+                    </el-link><br>
+                    <el-link :underline="false" type="text" @click="openMessage">实验六</el-link><br>
                 </el-tab-pane>
                 <el-tab-pane label="J2EE" name="second">
-                    <el-link id="oldJ2ee" href="https://github.com/zhangjin1017/J2EEHomeWork">作业(过时,截止到实验1)</el-link>
+                    <el-link :underline="false" id="oldJ2ee" href="https://github.com/zhangjin1017/J2EEHomeWork">
+                        作业(过时,截止到实验1)</el-link>
                     <br>
-                    <el-link href="https://github.com/zhangjin1017/J2EEShiYan1ByBoot">实验1完整版(springboot+jpa+vue前后端分离)
+                    <el-link :underline="false" href="https://github.com/zhangjin1017/J2EEShiYan1ByBoot">
+                        实验1完整版(springboot+jpa+vue前后端分离)
                     </el-link><br>
-                    <el-link id="newJ2ee" href="https://github.com/zhangjin1017/J2EEHomeWork-SpringBoot">作业(springboot)
+                    <el-link :underline="false" href="https://github.com/zhangjin1017/J2EEHomeWork-SpringBoot">
+                        作业(springboot)
                     </el-link>
                     <br>
                 </el-tab-pane>
 
                 <el-tab-pane label="软件工程" name="third">
-                    <el-link href="ruanjiangongcheng/ruanjiangongcheng308.html">2022-3-8</el-link><br>
-                    <el-link href="ruanjiangongcheng/ruanjiangongcheng310.html">2022-3-10</el-link><br>
-                    <el-link href="ruanjiangongcheng/ruanjiangongcheng315.html">2022-3-15</el-link><br>
+                    <el-link :underline="false" href="ruanjiangongcheng/ruanjiangongcheng308.html">2022-3-8</el-link>
+                    <br>
+                    <el-link :underline="false" href="ruanjiangongcheng/ruanjiangongcheng310.html">2022-3-10</el-link>
+                    <br>
+                    <el-link :underline="false" href="ruanjiangongcheng/ruanjiangongcheng315.html">2022-3-15</el-link>
+                    <br>
                 </el-tab-pane>
                 <el-tab-pane label="计算机组成原理" name="fourth">
-                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye1.html">作业一</el-link><br>
-                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye2.html">作业二</el-link><br>
-                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye3.html">作业三</el-link><br>
-                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye4.html">作业四</el-link><br>
-                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye5.html">作业五</el-link><br>
-                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye6.html">作业六</el-link><br>
-                    <el-link href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye7.html">作业七</el-link><br>
+                    <el-link :underline="false" href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye1.html">作业一
+                    </el-link><br>
+                    <el-link :underline="false" href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye2.html">作业二
+                    </el-link><br>
+                    <el-link :underline="false" href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye3.html">作业三
+                    </el-link><br>
+                    <el-link :underline="false" href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye4.html">作业四
+                    </el-link><br>
+                    <el-link :underline="false" href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye5.html">作业五
+                    </el-link><br>
+                    <el-link :underline="false" href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye6.html">作业六
+                    </el-link><br>
+                    <el-link :underline="false" href="jisuanjizuchengyuanli/jisuanjizuchengyuanlizuoye7.html">作业七
+                    </el-link><br>
                 </el-tab-pane>
                 <el-tab-pane label="推荐的学习资料" name="fifth">
-                    <el-link href="https://www.bilibili.com/read/cv9965357">Java学习路线图（2022版，视频已更新）
+                    <el-link :underline="false" href="https://www.bilibili.com/read/cv9965357">Java学习路线图（2022版，视频已更新）
                     </el-link><br>
-                    <el-link href=" https://www.bilibili.com/read/cv11353319?from=search&spm_id_from=333.337.0.0">
+                    <el-link :underline="false"
+                        href=" https://www.bilibili.com/read/cv11353319?from=search&spm_id_from=333.337.0.0">
                         2022年黑马程序员前端入门学习路线图（最新）
                     </el-link><br>
-                    <el-link href="https://blog.csdn.net/silence_r/article/details/119142594">CentOs7安装mysql8教程
+                    <el-link :underline="false" href="https://blog.csdn.net/silence_r/article/details/119142594">
+                        CentOs7安装mysql8教程
                     </el-link><br>
-
-
-
                 </el-tab-pane>
             </el-tabs>
         </template>
 
+        <audio class="myaudio" src="music/圈圈菌 - 想某人DJ版.mp3" controls autoplay loop>
 
+        </audio>
 
     </div>
 
@@ -106,13 +125,14 @@
                     });
                 },
 
+
+
             },
-
-
-            mouted() {
-
-
+            //挂载
+            mounted() {
+                console.log('mounted');
             }
+
         })
     </script>
 
