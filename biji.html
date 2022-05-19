@@ -33,12 +33,6 @@
         #myaudio {
             width: 100%;
         }
-
-        #musicPic {
-            /* 图片占满div */
-
-            object-fit: cover
-        }
     </style>
 </head>
 
@@ -120,35 +114,32 @@
         <!-- 音乐播放器卡片 -->
         <div id="footer">
             <el-row>
-                <el-col :span="8">
-                    <el-card :body-style="{ padding: '8px' }">
+                <el-col style="width: 100%;">
+                    <el-card>
                         <!-- <div>
                             <img class="musicPic" :src="musicPicUrl">
                         </div> -->
                         <div class="demo-image">
                             <div>
-                                <span class="demonstration">{{ fit }}</span>
-                                <el-image style="width: 50%; height: 100%" :src="musicPicUrl" :fit="cover">
+                                <el-image style="width: 100px; float: left;" :src="musicPicUrl">
                                 </el-image>
                             </div>
-                            <div style="margin-left: 60%;margin-top: -20%;">
+                            <div style="float: left;padding-left: 5%;">
                                 <label>歌名:{{name}}</label><br>
                                 <label>歌手:{{artistsname}}</label>
                                 <div>
-                                    <el-button style="margin: 10px;" type="primary" class="button" @click="changeMusic">
+                                    <el-button style="margin: 5px;" type="primary" class="button" @click="changeMusic">
                                         换一首
                                     </el-button>
+
                                 </div>
                             </div>
                         </div>
-
-
-
-                        <audio id="myaudio" class="myaudio" :src="musicUrl" controls autoplay loop>
-                        </audio>
                     </el-card>
                 </el-col>
             </el-row>
+            <audio id="myaudio" class="myaudio" :src="musicUrl" controls autoplay @ended="changeMusic">
+            </audio>
         </div>
         <!-- 音乐播放器卡片  end-->
 
@@ -164,8 +155,7 @@
                 musicUrl: "",
                 musicPicUrl: "",
                 artistsname: "",
-                name: ""
-
+                name: "",
             },
 
             methods: {
@@ -178,6 +168,7 @@
                     });
                 },
                 getRandomMusic() {
+                    var audio = document.getElementById("myaudio");
                     var that = this;
                     axios.get("https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=json")
                         .then(function (response) {
@@ -192,7 +183,8 @@
                 },
                 changeMusic() {
                     this.getRandomMusic();
-                }
+                },
+
 
 
             },
@@ -200,8 +192,8 @@
             mounted() {
                 console.log('mounted');
                 this.getRandomMusic();
-            }
 
+            },
         })
     </script>
 
