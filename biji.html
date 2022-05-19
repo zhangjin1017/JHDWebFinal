@@ -33,6 +33,12 @@
         #myaudio {
             width: 100%;
         }
+
+        #musicPic {
+            /* 图片占满div */
+
+            object-fit: cover
+        }
     </style>
 </head>
 
@@ -109,13 +115,43 @@
                 </el-tab-pane>
             </el-tabs>
         </template>
+
+
+        <!-- 音乐播放器卡片 -->
         <div id="footer">
-            <h3>随机音乐</h3>
-            <label>歌名:{{name}}</label><br>
-            <label>歌手:{{artistsname}}</label>
-            <audio id="myaudio" class="myaudio" :src="musicUrl" controls autoplay loop>
-            </audio>
+            <el-row>
+                <el-col :span="8">
+                    <el-card :body-style="{ padding: '8px' }">
+                        <!-- <div>
+                            <img class="musicPic" :src="musicPicUrl">
+                        </div> -->
+                        <div class="demo-image">
+                            <div>
+                                <span class="demonstration">{{ fit }}</span>
+                                <el-image style="width: 50%; height: 100%" :src="musicPicUrl" :fit="cover">
+                                </el-image>
+                            </div>
+                            <div style="margin-left: 60%;margin-top: -20%;">
+                                <label>歌名:{{name}}</label><br>
+                                <label>歌手:{{artistsname}}</label>
+                                <div>
+                                    <el-button style="margin: 10px;" type="primary" class="button" @click="changeMusic">
+                                        换一首
+                                    </el-button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <audio id="myaudio" class="myaudio" :src="musicUrl" controls autoplay loop>
+                        </audio>
+                    </el-card>
+                </el-col>
+            </el-row>
         </div>
+        <!-- 音乐播放器卡片  end-->
+
     </div>
 
     <script>
@@ -126,6 +162,7 @@
                 message: 'Hello Vue!',
                 activeName: 'third',
                 musicUrl: "",
+                musicPicUrl: "",
                 artistsname: "",
                 name: ""
 
@@ -145,12 +182,16 @@
                     axios.get("https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=json")
                         .then(function (response) {
                             that.musicUrl = response.data.data.url;
+                            that.musicPicUrl = response.data.data.picurl;
                             that.artistsname = response.data.data.artistsname;
                             that.name = response.data.data.name;
                         }, function (error) {
                             console.log(error)
                         })
 
+                },
+                changeMusic() {
+                    this.getRandomMusic();
                 }
 
 
