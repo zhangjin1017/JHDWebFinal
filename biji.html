@@ -80,6 +80,11 @@
                     <el-link :underline="false" href="https://blog.csdn.net/qq_44275213/article/details/107357972">
                         网易云音乐随机歌曲调用API接口
                     </el-link><br>
+                    <el-link :underline="false"
+                        href="https://neteasecloudmusicapi.vercel.app/#/?id=neteasecloudmusicapi">
+                        网易云音乐API接口文档
+                    </el-link><br>
+
                 </el-tab-pane>
 
                 <el-tab-pane label="计算机组成原理" name="fourth">
@@ -129,10 +134,13 @@
                                 <label>歌手:{{artistsname}}</label>
                                 <div>
                                     <el-button style="margin: 5px;" type="primary" class="button" @click="changeMusic">
-                                        换一首
+                                        不满意,换一首
                                     </el-button>
-
                                 </div>
+                            </div>
+                            <div style="float: left;padding-left: 5%;">
+                                <el-input v-model="searchMusicInput" placeholder="请输入歌名/歌手(如果双条件以空格隔开)"></el-input>
+                                <el-button style="margin: 5px;" type="primary" @click="searchMusic">搜索</el-button>
                             </div>
                         </div>
                     </el-card>
@@ -156,6 +164,7 @@
                 musicPicUrl: "",
                 artistsname: "",
                 name: "",
+                searchMusicInput: ""
             },
 
             methods: {
@@ -184,7 +193,37 @@
                 changeMusic() {
                     this.getRandomMusic();
                 },
-
+                searchMusic() {
+                    var that = this;
+                    axios.get("https://autumnfish.cn/search?limit=1&keywords=" + this.searchMusicInput)
+                        .then(function (response) {
+                            console.log(response);
+                            var id = response.data.result.songs[0].id;
+                            that.musicPicUrl = response.data.result.songs[0].artists[0].img1v1Url;
+                            that.artistsname = response.data.result.songs[0].artists[0].name;
+                            that.name = response.data.result.songs[0].name;
+                            that.getMusic(id);
+                        }, function (error) {
+                            console.log(error)
+                        })
+                },
+                getMusic(id) {
+                    var that = this;
+                    console.log(id);
+                    axios.get("https://autumnfish.cn/song/url?id=" + id)
+                        .then(function (response) {
+                            that.musicUrl = response.data.data[0].url;
+                            // 清空searchMusicInput
+                            that.searchMusicInput = "";
+                            that.$message({
+                                showClose: true,
+                                message: '搜索成功,正在播放',
+                                type: 'success'
+                            });
+                        }, function (error) {
+                            console.log(error)
+                        })
+                }
 
 
             },
