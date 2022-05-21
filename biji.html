@@ -72,7 +72,7 @@
                     </el-link><br>
                     <el-link :underline="false"
                         href=" https://www.bilibili.com/read/cv11353319?from=search&spm_id_from=333.337.0.0">
-                        2022年黑马程序员前端入门学习路线图（最新）
+                        2022年黑马程序员前端入门学习路线图(最新)
                     </el-link><br>
                     <el-link :underline="false" href="https://blog.csdn.net/silence_r/article/details/119142594">
                         CentOs7安装mysql8教程
@@ -83,6 +83,9 @@
                     <el-link :underline="false"
                         href="https://neteasecloudmusicapi.vercel.app/#/?id=neteasecloudmusicapi">
                         网易云音乐API接口文档
+                    </el-link><br>
+                    <el-link :underline="false" href="https://rain120.github.io/qq-music-api/#/?id=qqmusicapi">
+                        QQ音乐API接口文档
                     </el-link><br>
 
                 </el-tab-pane>
@@ -126,8 +129,14 @@
                         </div> -->
                         <div class="demo-image">
                             <div>
-                                <el-image style="width: 100px; float: left;" :src="musicPicUrl">
+
+                                <el-image v-if="havePic==1" style="width: 100px; float: left;" :src="musicPicUrl">
                                 </el-image>
+                                <!-- 视频 -->
+                                <video v-else-if="havePic==0" id="video" controls="controls" autoplay="autoplay"
+                                    style="width: 300px;float: left;">
+                                    <source :src="mvUrl" type="video/mp4">
+
                             </div>
                             <div style="float: left;padding-left: 5%;">
                                 <label>歌名:{{name}}</label><br>
@@ -164,7 +173,9 @@
                 musicPicUrl: "",
                 artistsname: "",
                 name: "",
-                searchMusicInput: ""
+                searchMusicInput: "",
+                mvUrl: "",
+                havePic: 1,
             },
 
             methods: {
@@ -177,6 +188,7 @@
                     });
                 },
                 getRandomMusic() {
+                    this.havePic = 1;
                     var audio = document.getElementById("myaudio");
                     var that = this;
                     axios.get("https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=json")
@@ -194,22 +206,24 @@
                     this.getRandomMusic();
                 },
                 searchMusic() {
+
                     var that = this;
                     axios.get("https://autumnfish.cn/search?limit=1&keywords=" + this.searchMusicInput)
                         .then(function (response) {
-                            console.log(response);
+
                             var id = response.data.result.songs[0].id;
                             that.musicPicUrl = response.data.result.songs[0].artists[0].img1v1Url;
+                            var mvid = response.data.result.songs[0].mvid;
                             that.artistsname = response.data.result.songs[0].artists[0].name;
                             that.name = response.data.result.songs[0].name;
-                            that.getMusic(id);
+                            that.getMusic(id, mvid);
                         }, function (error) {
                             console.log(error)
                         })
                 },
-                getMusic(id) {
+                getMusic(id, mvid) {
                     var that = this;
-                    console.log(id);
+
                     axios.get("https://autumnfish.cn/song/url?id=" + id)
                         .then(function (response) {
                             that.musicUrl = response.data.data[0].url;
@@ -222,7 +236,21 @@
                             });
                         }, function (error) {
                             console.log(error)
-                        })
+                        });
+
+                    if (mvid != 0) {
+
+                        axios.get("https://autumnfish.cn/mv/url?id=" + mvid)
+                            .then(function (response) {
+
+
+                                that.mvUrl = response.data.data.url;
+                                that.havePic = 0;
+                            }, function (error) {
+                                console.log(error)
+                            })
+                    }
+
                 }
 
 
