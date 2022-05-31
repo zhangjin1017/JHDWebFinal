@@ -147,10 +147,10 @@
                                     </el-button>
                                 </div>
                             </div>
-                            <div style="float: left;padding-left: 5%;">
+                            <!-- <div style="float: left;padding-left: 5%;">
                                 <el-input v-model="searchMusicInput" placeholder="歌名/歌手(双条件以空格隔开)"></el-input>
                                 <el-button style="margin: 5px;" type="primary" @click="searchMusic">搜索</el-button>
-                            </div>
+                            </div> -->
                         </div>
                     </el-card>
                 </el-col>
@@ -226,6 +226,13 @@
 
                     axios.get("https://autumnfish.cn/song/url?id=" + id)
                         .then(function (response) {
+                            console.log(response);
+                            console.log(response.data.data)
+                            console.log(response.data.data.verifyUrl)
+                            if (response.data.data.actionCode = "1041403") {
+                                // 打开新连接
+                                window.open(response.data.data.verifyUrl);
+                            }
                             that.musicUrl = response.data.data[0].url;
                             // 清空searchMusicInput
                             that.searchMusicInput = "";
